@@ -158,7 +158,7 @@ const colorsList: Color[] = [
 
 ReactDOM.render(
   <App>
-    <TypeAhead<Color> dataSource={colorsList} />
+    <TypeAhead<Color> list={colorsList} />
   </App>,
   document.getElementById('root')
 );

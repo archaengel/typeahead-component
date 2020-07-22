@@ -1,14 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { SuggestionsMenu } from './components';
 import { TypeAheadContainer, TypeAheadInput } from '../../lib/components';
 
 interface Props<T> {
-  dataSource: T[];
+  list: T[];
 }
 
-export const TypeAhead = <T,>({ dataSource }: Props<T>) => {
+export const TypeAhead = <T,>({ list }: Props<T>) => {
+  const [query, setQuery] = useState<string>('');
   return (
     <TypeAheadContainer>
-      <TypeAheadInput />
+      <TypeAheadInput onChange={(e) => setQuery(e.target.value)} />
+      {!!query.trim() && <SuggestionsMenu isHidden={false} />}
     </TypeAheadContainer>
   );
 };
