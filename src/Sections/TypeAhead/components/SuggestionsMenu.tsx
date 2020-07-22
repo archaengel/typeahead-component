@@ -1,16 +1,26 @@
 import React from 'react';
-import {
-  SuggestionsList,
-  SuggestionsListItem,
-  SuggestionsListProps,
-} from '../../../lib/components';
+import { SuggestionsList, SuggestionsListItem } from '../../../lib/components';
 
-export const SuggestionsMenu = ({ isHidden }: SuggestionsListProps) => {
+interface Props<T> {
+  suggestions: T[];
+  onOptionFocus: (index: number) => () => void;
+}
+
+export const SuggestionsMenu = <T,>({
+  suggestions,
+  onOptionFocus,
+}: Props<T>) => {
+  const renderSuggestionItem = (suggestion: T, index: number) => (
+    <SuggestionsListItem
+      tabIndex={0}
+      key={`${suggestion}_${index}`}
+      onFocus={onOptionFocus(index)}
+    >
+      {suggestion}
+    </SuggestionsListItem>
+  );
+
   return (
-    <SuggestionsList>
-      <SuggestionsListItem tabIndex={0}>This</SuggestionsListItem>
-      <SuggestionsListItem tabIndex={0}>That</SuggestionsListItem>
-      <SuggestionsListItem tabIndex={0}>The Other Thing</SuggestionsListItem>
-    </SuggestionsList>
+    <SuggestionsList>{suggestions.map(renderSuggestionItem)}</SuggestionsList>
   );
 };
