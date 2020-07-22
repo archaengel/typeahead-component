@@ -4,7 +4,9 @@
     "lib": [
       "dom",
       "dom.iterable",
-      "esnext"
+      "esnext",
+      "ES2015.Collection",
+      "ES2015.Iterable"
     ],
     "allowJs": true,
     "skipLibCheck": true,
@@ -17,9 +19,8 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react"
+    "jsx": "react",
+    "downlevelIteration": true
   },
-  "include": [
-    "src"
-  ]
+  "include": ["src"]
 }
