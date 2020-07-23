@@ -18,7 +18,9 @@
     "typescript": "^3.9.7"
   },
   "scripts": {
-    "start": "react-scripts start"
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "deploy": "npm run build && serve -s build"
   },
   "eslintConfig": {
     "extends": "react-app"

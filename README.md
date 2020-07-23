@@ -1,58 +1,54 @@
-# Project Instructions
+# TypeAhead Component
 
-- This app is currently in a broken state. You must create your component and add it to `ReactDOM.render` in `src/index.js` to get started.
-- Using React and CSS, create a `Typeahead` component that takes a `list` prop.
-- Use the `colorsList` list defined in `src/index.js` as the value for the `list` prop.
-  - Please do not change `colorsList` or its contents.
-  - If you want to go above and beyond, you can add other features or use another list that you receive from an async query, as long as it still meets all the same requirements when the `colorsList` is passed as the `list` prop.
+## Table of Contents
 
-## Submitting your Project
-- Send the link to a public repository with your project submission to your recruitment contact.
+- [Prerequisites](#pre_reqs)
+- [Getting Started](#getting_started)
+- [Functional Requirements](#func_reqs)
 
-#### Things we like to see
+### Prerequisites <a name = "prereqs"></a>
 
-- Use of propTypes and/or other typing systems
-- Responsive design
-- Tasteful styling
-- Tasteful animations are a bonus
+If you do not already have `serve` installed globally, you will need to install it before running the project. Do so by running:
 
-#### Things we hope not to see
+```bash
+  npm install -g serve
+```
 
-- Use of styling frameworks (Material, Bootstrap, Tailwind, etc.)
-  - Styling writing libraries and pre-processors (Styled Components, SCSS, etc) are welcome but not expected.
-- Copy/Pasted code from other source code
+## Getting Started <a name = "getting_started"></a>
 
-## Requirements
+To get this project started on your local machine:
+
+1. In the root folder of the project, run:
+
+```bash
+npm install
+```
+
+4. Build the app and deploy it on your local machine by running:
+
+```bash
+npm run deploy
+```
+
+## Functional Requirements <a name = "func_reqs"></a>
 
 1. As the user types in the input field, a list of options should appear below it.
-   - The list should only appear when input is not empty. Whitespace is considered empty.
-   - The list should contain items from the `list` prop that **start** with the user entered value. Matching should be case insensitive. Every new character typed should filter the list.
+   - The typeahead component uses a handler listening for the input elements `change` event to accomplish this.
 2. Clicking on a list item should populate the input with the selected item's value and hide the list.
+
+- The typeahead component uses a callback passed into the `SuggestionMenu` component to accomplish this.
+
 3. As the user types, the matching substring within the dipslayed options should be bold. The rest of the string should not be bold.
    1. Ex. When the user types `bl`, `bl` in `black`, `blanchedalmond`, `blue`, and `blueviolet` should be bold. The rest of each word should not be bold.
-4. For visible options, style the substring the user has entered as **bold**.
-5. Mousing over a list item should highlight it, at least darkening its background color. Other styling is up to you.
+      - The typeahead component uses a prefix tree to calculate the correct suggestions. In a production setting, a robust searching package/solution would likely be used to accomplish this.
+4. Mousing over a list item should highlight it, at least darkening its background color. Other styling is up to you.
+
+- I used `styled-components` to style the base components, including psuedo-classes and psuedo-elements.
+
 6. The input and list should also be navigable using the keyboard.
-   - Using `tab` and `shift+tab`, the user should be able to move focus to and from the different list items.
-     - With the cursor in the input, pressing the `tab` key should move focus to the first item with the default browser focus style.
-     - Subsequent presses of the "tab" key should focus the next item in the list.
-     - Pressing the `shift+tab` keys should focus the previous item in the list.
-     - Pressing the `shift+tab` key when the first item is focused should focus
-       the input again.
-     - Mousing over other list items should highlight them while the keyboard-
-       focused item remains focused.
-     - Pressing the `tab` key when no list is visible should move focus away
-       from the input.
-   - Pressing the `enter` or `return` key when an item is focused should populate the input with the focused item's value, hide the list, and focus the input again.
-   - Pressing the `escape` key should close the list.
+
+- The typeahead component uses HTML tab indices to accomplish navigation via `tab` and `shift`+`tab`. For the behavior specificied for the `esc` and `enter`/`return` keys, a keyboard event handler was used in combination with a `react` ref object to programmatically focus the input.
+
 7. Clicking outside the input or the list should close the list.
 
-#### Development Instructions
-
-1. Clone this repository and run `npm install` to install dependencies.
-2. From the project directory, `npm start` runs the app in development mode.
-3. Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-###### Attributions
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+- To accomplish this, a hook was used which adds event listeners to the document to listen for clicks which fall outside the ref object provided to the hook.
