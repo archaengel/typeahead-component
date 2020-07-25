@@ -1,5 +1,4 @@
 # TypeAhead Component
-[![Run on Repl.it](https://repl.it/badge/github/archaengel/typeahead-component)](https://repl.it/github/archaengel/typeahead-component)
 
 ## Table of Contents
 
@@ -37,19 +36,19 @@ npm run deploy
    - The typeahead component uses a handler listening for the input elements `change` event to accomplish this.
 2. Clicking on a list item should populate the input with the selected item's value and hide the list.
 
-- The typeahead component uses a callback passed into the `SuggestionMenu` component to accomplish this.
+   - The typeahead component uses a callback passed into the `SuggestionMenu` component to accomplish this.
 
 3. As the user types, the matching substring within the dipslayed options should be bold. The rest of the string should not be bold.
    1. Ex. When the user types `bl`, `bl` in `black`, `blanchedalmond`, `blue`, and `blueviolet` should be bold. The rest of each word should not be bold.
       - The typeahead component uses a prefix tree to calculate the correct suggestions. In a production setting, a robust searching package/solution would likely be used to accomplish this.
 4. Mousing over a list item should highlight it, at least darkening its background color. Other styling is up to you.
 
-- I used `styled-components` to style the base components, including psuedo-classes and psuedo-elements.
+   - I used `styled-components` to style the base components, including psuedo-classes and psuedo-elements.
 
-6. The input and list should also be navigable using the keyboard.
+5. The input and list should also be navigable using the keyboard.
 
-- The typeahead component uses HTML tab indices to accomplish navigation via `tab` and `shift`+`tab`. For the behavior specificied for the `esc` and `enter`/`return` keys, a keyboard event handler was used in combination with a `react` ref object to programmatically focus the input.
+   - The typeahead component uses HTML tab indices to accomplish navigation via `tab` and `shift`+`tab`. For the behavior specificied for the `esc` and `enter`/`return` keys, a keyboard event handler was used in combination with a `react` ref object to programmatically focus the input.
 
-7. Clicking outside the input or the list should close the list.
+6. Clicking outside the input or the list should close the list.
 
-- To accomplish this, a hook was used which adds event listeners to the document to listen for clicks which fall outside the ref object provided to the hook.
+   - To accomplish this, a hook was used which adds event listeners to the document to listen for clicks which fall outside the ref object provided to the hook.
