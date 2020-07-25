@@ -1,4 +1,5 @@
 # TypeAhead Component
+[![Run on Repl.it](https://repl.it/badge/github/archaengel/typeahead-component)](https://repl.it/github/archaengel/typeahead-component)
 
 ## Table of Contents
 
