@@ -1,6 +1,6 @@
 # TypeAhead Component
 
-![](public/assets/typeahed-demo.gif)
+![](public/assets/typeahead-demo.gif)
 
 ## Table of Contents
 
