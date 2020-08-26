@@ -1,5 +1,7 @@
 # TypeAhead Component
 
+![](public/assets/typeahead-demo.gif)
+
 ## Table of Contents
 
 - [Prerequisites](#pre_reqs)
